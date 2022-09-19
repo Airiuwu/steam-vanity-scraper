@@ -21,7 +21,7 @@ def main():
 	clearConsole()
 	print('How many characters would you like to search for?')
 	amount = int(input())
-	for i in range(maxsize**10):
+	for _ in range(maxsize**10):
 		vanityURL = randomString(amount)
 		if vanityURL in used_vanity:
 			vanityURL = randomString(amount)
