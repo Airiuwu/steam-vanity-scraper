@@ -17,7 +17,6 @@ def main():
 	for i in range(maxsize**10):
 		vanityURL = randomString(amount)
 		resp = get(f"http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key={config.steamAPIKey}&vanityurl={vanityURL}").json()
-		print(resp)
 		if resp['response']['success'] == 1:
 			print(f'\033[91mVanity URL Taken: {vanityURL}\033[0m')
 		else:
