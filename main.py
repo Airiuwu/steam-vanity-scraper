@@ -1,5 +1,5 @@
-from json import JSONDecodeError
 from string import ascii_uppercase, digits
+from json import JSONDecodeError
 from os import system, name
 from random import choice
 from requests import get
