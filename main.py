@@ -21,6 +21,6 @@ def main():
             break
         else:
             print(f'\033[91mVanity URL Taken: {vanityURL}\033[0m')
-        sleep(0.017674)
+        sleep(config.delay)
 
 main()
