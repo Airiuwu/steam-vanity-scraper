@@ -7,7 +7,7 @@ from time import sleep
 from os import system
 import config
 
-def randomString(size=8, chars=ascii_uppercase + digits + ascii_lowercase + "_" + "-"):
+def randomString(size=8, chars=ascii_uppercase + digits + "_" + "-"):
 	return ''.join(choice(chars) for _ in range(size))
 
 def main():
