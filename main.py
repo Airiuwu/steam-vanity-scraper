@@ -1,5 +1,5 @@
 from optparse import AmbiguousOptionError
-from string import ascii_uppercase, digits, ascii_lowercase
+from string import ascii_uppercase, digits
 from random import choice
 from requests import get
 from sys import maxsize
