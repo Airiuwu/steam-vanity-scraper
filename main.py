@@ -1,18 +1,24 @@
 from string import ascii_uppercase, digits
+from os import system, name
 from random import choice
 from requests import get
 from sys import maxsize
 from time import sleep
-from os import system
 import config
 
 used_vanity = []
+
+def clearConsole():
+    command = 'clear'
+    if name in ('nt', 'dos'):
+        command = 'cls'
+    system(command)
 
 def randomString(size=8, chars=ascii_uppercase + digits + "_" + "-"):
 	return ''.join(choice(chars) for _ in range(size))
 
 def main():
-	system('cls')
+	clearConsole()
 	print('How many characters would you like to search for?')
 	amount = int(input())
 	for i in range(maxsize**10):
