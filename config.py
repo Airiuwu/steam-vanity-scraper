@@ -1,2 +1,2 @@
 steamAPIKey = "" # find this here (https://steamcommunity.com/dev/registerkey)
-delay = "17.674" # DONT TOUCH THIS.
+delay = 0.017674 # DONT TOUCH THIS.
