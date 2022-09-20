@@ -37,6 +37,8 @@ def search(amount):
 			resp = get(f'http://api.steampowered.com/ISteamUser/ResolveVanityURL/v1/?key={config.steamAPIKey}&vanityurl={vanityURL}').json()
 		except JSONDecodeError:
 			start(amount)
+		except ConnectionError:
+			start(amount)
 		if resp['response']['success'] == 1:
 			print(f'{bcolors.ERRMSG}Vanity URL Taken: {vanityURL}{bcolors.ENDC}')
 			used_vanity.append(vanityURL) 
