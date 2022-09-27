@@ -10,6 +10,8 @@ import bcolors
 import config
 
 used_vanity = []
+class amountError(Exception):
+    pass
 
 def clearConsole():
 	command = 'clear'
@@ -55,13 +57,23 @@ def search(amount):
 def main():
 	clearConsole()
 	startupCheck()
-	try:
-		print('How many characters would you like to search for?')
-		amount = int(input())
-	except ValueError:
-		clearConsole()
-		print('How many characters would you like to search for? (NUMBERS ONLY)')
-		amount = int(input())
+	allowed = True
+	while allowed:
+		try:
+			print('How many characters would you like to search for? (3-32)')
+			amount = int(input())
+			if amount > 32 or amount < 3:
+				raise amountError
+		except ValueError:
+			clearConsole()
+			print(f'How many characters would you like to search for? (3-32) {bcolors.IMPORTANT}(NUMBERS ONLY){bcolors.ENDC}')
+			amount = int(input())
+		except amountError:
+			print(f'How many characters would you like to search for? {bcolors.IMPORTANT}(3-32){bcolors.ENDC}')
+			amount = int(input())
+		else:
+			allowed = False
 	start(amount)
+
 
 main()
