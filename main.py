@@ -1,3 +1,4 @@
+from multiprocessing.sharedctypes import Value
 from string import ascii_uppercase, digits
 from json import JSONDecodeError
 from os import system, name
@@ -44,14 +45,23 @@ def search(amount):
 			used_vanity.append(vanityURL) 
 		else:
 			print(f'{bcolors.OKMSG}Avalible Vanity URL found: {vanityURL}{bcolors.ENDC}')
-			break
+			print("Would you like to keep searching? (Y/N)")
+			answer = input()
+			if answer not in ['y', 'n', 'Y', 'N'] or answer in ['N', 'n']:
+				print("Aborting!")
+				break
 		sleep(config.delay)
 
 def main():
 	clearConsole()
 	startupCheck()
-	print('How many characters would you like to search for?')
-	amount = int(input())
+	try:
+		print('How many characters would you like to search for?')
+		amount = int(input())
+	except ValueError:
+		clearConsole()
+		print('How many characters would you like to search for? (NUMBERS ONLY)')
+		amount = int(input())
 	start(amount)
 
 main()
