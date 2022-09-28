@@ -57,23 +57,21 @@ def search(amount):
 def main():
 	clearConsole()
 	startupCheck()
-	allowed = True
-	while allowed:
-		try:
-			print('How many characters would you like to search for? (3-32)')
-			amount = int(input())
-			if amount > 32 or amount < 3:
-				raise amountError
-		except ValueError:
-			clearConsole()
-			print(f'How many characters would you like to search for? (3-32) {bcolors.IMPORTANT}(NUMBERS ONLY){bcolors.ENDC}')
-			amount = int(input())
-		except amountError:
-			print(f'How many characters would you like to search for? {bcolors.IMPORTANT}(3-32){bcolors.ENDC}')
-			amount = int(input())
-		else:
-			allowed = False
-	start(amount)
+	try:
+		print('How many characters would you like to search for? (3-32)')
+		amount = int(input())
+		if amount > 32 or amount < 3:
+			raise amountError
+	except ValueError:
+		clearConsole()
+		print(f'How many characters would you like to search for? (3-32) {bcolors.IMPORTANT}(NUMBERS ONLY){bcolors.ENDC}')
+		amount = int(input())
+	except amountError:
+		clearConsole()
+		print(f'How many characters would you like to search for? {bcolors.IMPORTANT}(3-32){bcolors.ENDC}')
+		amount = int(input())
+	finally:
+		start(amount)
 
 
 main()
